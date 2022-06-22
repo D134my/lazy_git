@@ -1,0 +1,1 @@
+enum class command_modes { add, commit, push, pull, status, reset, log, show };
