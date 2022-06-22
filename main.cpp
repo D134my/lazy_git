@@ -1,34 +1,18 @@
 #include "lazy.hpp"
 
 int main() {
+
   lazy l;
 
-  auto result = l.exec(command_modes::status);
-  std::cout << "status result : " << result << std::endl;
+  auto const commands = std::vector<command_modes>{
+      command_modes::status, command_modes::add,  command_modes::commit,
+      command_modes::status, command_modes::pull, command_modes::pull};
 
-  std::cout << "\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n";
-
-  result = l.exec(command_modes::add);
-  std::cout << "add result : " << result << " Ok " << std::endl;
-
-  std::cout << "\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n";
-
-  result = l.exec(command_modes::status);
-  std::cout << "status result : " << result << std::endl;
-
-  std::cout << "\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n";
-
-  result = l.exec(command_modes::commit);
-  std::cout << "commit result : " << result << std::endl;
-
-  std::cout << "\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n";
-
-  result = l.exec(command_modes::pull);
-  std::cout << "pull result : " << result << std::endl;
-  std::cout << "\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n";
-
-  result = l.exec(command_modes::push);
-  std::cout << "push result : " << result << " Ok " << std::endl;
+  for (auto cmd : commands) {
+    auto result = l.exec(cmd);
+    std::cout << result << std::endl;
+    std::cout << "\n\n ****************************** \n\n";
+  }
 
   return 0;
 }
