@@ -6,7 +6,7 @@ int main() {
 
   auto const commands = std::vector<command_modes>{
       command_modes::status, command_modes::add,  command_modes::commit,
-      command_modes::status, command_modes::pull, command_modes::pull};
+      command_modes::status, command_modes::pull, command_modes::push};
 
   for (auto cmd : commands) {
     auto result = l.exec(cmd);
